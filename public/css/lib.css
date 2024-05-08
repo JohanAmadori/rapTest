@@ -1,0 +1,377 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+
+/*
+  lib/lib.css
+*/
+
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.question {
+  --correct-color: rgb(9, 187, 69);
+  --incorrect-color: rgb(245, 48, 48);
+  --selected-color: green;
+  --disabled-color: rgb(219, 219, 219);
+  --disabled-correct-color: rgb(118, 212, 149);
+  --disabled-incorrect-color: rgb(221, 131, 131);
+  min-height: max-content;
+  padding: 1em;
+  border: 1px solid var(--selected-color);
+  border-radius: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 650px;
+  display: flex;
+  flex-direction: column; /* Alignez le contenu en colonne */
+  align-items: center; /* Centrez les enfants horizontalement */
+  text-align: center; /* Centrez le texte à l'intérieur */
+  margin: auto; /* Centrez la question horizontalement */
+  margin-bottom: 20px;
+  
+}
+
+.question-text {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+
+.answers {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 15px 20px;
+  margin-bottom: 20px;
+}
+
+.answer {
+  border: none;
+  font-size: 18px;
+  background: none;
+  padding: 10px 5px;
+  border: 2px solid white;
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 250px;
+}
+
+.question.correct {
+  border-color: var(--correct-color);
+}
+
+.question.incorrect {
+  border-color: var(--incorrect-color);
+}
+
+.question.correct .answer.selected {
+  --selected-color: var(--correct-color);
+}
+
+.question.incorrect .answer.selected {
+  --selected-color: var(--incorrect-color);
+}
+
+.answer:hover {
+  background: green;
+  color: white;
+  transition: all 200ms ease-out;
+}
+
+.answer.selected {
+  background: green(--selected-color);
+  border-color: var(--selected-color);
+  color: white;
+}
+
+.question.disabled .answer,
+.question.disabled .answer:hover {
+  background-color: var(--disabled-color);
+  border-color: var(--disabled-color);
+}
+
+.question.disabled.correct .answer.selected {
+  background-color: var(--disabled-correct-color);
+  border-color: var(--disabled-correct-color);
+}
+
+.question.disabled.incorrect .answer.selected {
+  background-color: var(--disabled-incorrect-color);
+  border-color: var(--disabled-incorrect-color);
+}
+
+.question-feedback {
+  color: black;
+  font-family: consolas, Cambria, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  display: none;
+}
+
+.question.correct .question-feedback,
+.question.incorrect .question-feedback {
+  display: inline-block;
+}
+
+.question.correct .question-feedback {
+  color: var(--correct-color);
+}
+
+.question.incorrect .question-feedback {
+  color: var(--incorrect-color);
+}
+
+/*
+  style.css
+*/
+
+#questions-container {
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  text-align: center;
+}
+
+
+
+
+
+
+
+@keyframes grow {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.grow {
+  animation: grow 1s ease-in-out;
+}
+
+@keyframes blink {
+  0% { background-color: red; }
+  50% { background-color: transparent; }
+  100% { background-color: red; }
+}
+
+.blink {
+  animation: blink 1s;
+}
+
+/* Appliquer des styles généraux à chaque bloc de question du quiz */
+.quiz-question {
+  --correct-color: rgb(9, 187, 69);
+  --incorrect-color: rgb(245, 48, 48);
+  --selected-color: green;
+  --disabled-color: rgb(219, 219, 219);
+  --disabled-correct-color: rgb(118, 212, 149);
+  --disabled-incorrect-color: rgb(221, 131, 131);
+  min-height: max-content;
+  padding: 1em;
+  border: 1px solid var(--selected-color);
+  border-radius: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 650px;
+  display: flex;
+  flex-direction: column; /* Alignez le contenu en colonne */
+  align-items: center; /* Centrez les enfants horizontalement */
+  text-align: center; /* Centrez le texte à l'intérieur */
+  margin: auto; /* Centrez la question horizontalement */
+  margin-bottom: 20px;
+  font-family: "DM Sans", sans-serif;
+}
+
+/* Style pour la liste des réponses */
+.answers {
+  list-style-type: none; /* supprime les puces */
+  padding: 0; /* supprime le padding par défaut */
+}
+
+/* Style pour chaque bouton de réponse */
+.reponse {
+  display: block; /* rend chaque réponse un élément de bloc pour prendre sa propre ligne */
+  width: 100%; /* largeur totale de son conteneur */
+  padding: 0.5em; /* padding à l'intérieur du bouton */
+  margin: 0.5em 0; /* marge pour l'espacement entre les boutons */
+  background: linear-gradient(115deg, rgb(0, 0, 0) 5.8%, rgb(178, 14, 14) 112.6%);
+  color: white; /* couleur du texte */
+  border: 1px solid #ccc; /* couleur de la bordure */
+  border-radius: 5px; /* coins arrondis */
+  font-family: "DM Sans", sans-serif;
+}
+
+.reponse:hover {
+  background-color: var(--selected-color); /* couleur de fond au survol */
+  color: #fff; /* couleur du texte au survol */
+}
+
+#scoreContainer {
+  position: fixed;
+  right: 40px;
+  top: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-family: "DM Sans", sans-serif;
+  color: white;
+  background: black;
+  color:white;
+  padding: 10px 15px;
+  min-width: 100px;
+  min-height: 45px;
+  border-radius: 10px;
+  cursor:default;
+}
+
+.reponse {
+  border: none;
+  font-size: 18px;
+  background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
+  padding: 10px 5px;
+  border: 2px solid white;
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 250px;
+}
+
+.quiz-question {
+  --correct-color: rgb(9, 187, 69);
+  --incorrect-color: rgb(245, 48, 48);
+  --selected-color: green;
+  --disabled-color: rgb(219, 219, 219);
+  --disabled-correct-color: rgb(118, 212, 149);
+  --disabled-incorrect-color: rgb(221, 131, 131);
+  min-height: max-content;
+  padding: 1em;
+  border: 1px solid var(--selected-color);
+  border-radius: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 650px;
+  display: flex;
+  flex-direction: column; /* Alignez le contenu en colonne */
+  align-items: center; /* Centrez les enfants horizontalement */
+  text-align: center; /* Centrez le texte à l'intérieur */
+  margin: auto; /* Centrez la question horizontalement */
+  margin-bottom: 20px;
+  font-size: 24px;
+  background: rgb(183,161,244);
+  background: linear-gradient(353deg, rgba(183,161,244,1) 33%, rgba(11,100,204,1) 100%);
+}
+
+#scoreContainer {
+  transition: transform 1s, background-color 1s; /* Smooth transition for size and color */
+  background: linear-gradient(115deg, rgb(0, 0, 0) 5.8%, rgb(178, 14, 14) 112.6%);
+}
+
+#scoreContainer.correct {
+  transform: scale(1.2); /* Grossit le conteneur */
+  background-color: green; /* Maintient la couleur verte pour la bonne réponse */
+}
+
+#scoreContainer.incorrect {
+  background-color: red; /* Change la couleur en rouge pour la mauvaise réponse */
+}
+
+.finir{
+    font-size: 25px;
+}
+
+.incorrect-answer {
+  background-color: red;
+}
+
+button.grise {
+  background-color: #ccc;
+  color: #666;
+}
+
+.reseaux {
+  text-align: center !important;
+  justify-content: center !important;
+  display:flex !important;
+}
+
+.finir.btn.btn-primary{
+  background-color: red;
+  color:white;
+  border-color: white;
+}
+
+
+
+
+.btn {
+  background-color: black; /* Couleur de fond initiale */
+  color: white; /* Couleur du texte */
+  padding: 10px 15px; /* Espacement intérieur pour augmenter la taille visuelle */
+  border: none; /* Retire la bordure, si nécessaire */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Animation douce pour le fond et la transformation */
+}
+
+.btn:hover {
+  background-color: black; /* Légèrement plus foncé que le blanc */
+  transform: scale(1.05); /* Augmente légèrement la taille */
+
+}
+
+
+
+.logo-animation {
+  transition: filter 0.3s ease; /* Transition douce pour le filtre */
+}
+
+.logo-animation:hover {
+  filter: grayscale(100%); /* Convertit l'image en noir et blanc au survol */
+}
+
+
+
+/* Styles that apply when the device width is less than 600px */
+@media (max-width: 600px) {
+  .container {
+      padding: 10px;
+  }
+
+  .menu {
+      font-size: 12px;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+
+.border{
+  border: none !important;
+}
+
+@keyframes scale {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.quiz-question {
+  opacity: 0; /* Initial hide */
+}
+
+.quiz-question.show {
+  opacity: 1; /* Show when 'show' class is added */
+  animation: scale 0.5s ease-in-out;
+}
+

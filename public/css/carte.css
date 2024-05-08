@@ -1,0 +1,67 @@
+body{
+    background-image: linear-gradient( 135deg, #a08e2b 10%, #0E197D 100%);
+    background-size: cover;  /* Assure que l'image couvre tout l'espace disponible */
+    background-position: center;  /* Centre l'image dans la page */
+    background-repeat: no-repeat;  /* Empêche la répétition de l'image */
+    min-height: 100vh;  /* Assure que le body a au moins la hauteur de la fenêtre */
+    color:white;
+
+}
+
+.photo_zeu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s;
+    max-width: max-content;
+    max-height: max-content;
+    margin: auto;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.photo_zeu {
+    animation-name: fadeIn;
+    animation-duration: 3s; /* Durée de l'animation */
+    animation-fill-mode: both; /* S'assure que l'élément reste visible après l'animation */
+}
+
+
+.photo_zeu:hover {    
+    transform: rotateY(30deg) rotateX(-30deg);    
+}
+
+.btn {
+    display: flex;
+    justify-content: center; 
+    font-family:'Franklin Gothic Medium';
+    text-decoration: none;
+
+    color:white;
+    font-size:20px;
+    max-width: max-content;
+    margin: auto;
+    border-radius: 20px;
+  }
+
+  img.carte{
+    max-width: none !important;
+    height: 700px !important;
+  }
+
+
+  .cards-container {
+    display: flex;
+}
+
+
+
+
+
+ 
+
+
+  

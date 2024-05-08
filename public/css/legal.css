@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.cgu {
+    padding: 20px;
+    background-color: #fff;
+}
+
+.cgu header {
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: center;
+}
+
+.cgu header h1 {
+    margin: 0;
+    color: #333;
+}
+
+.cgu section {
+    padding: 20px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.cgu h2 {
+    color: #444;
+}
+
+.cgu p {
+    margin: 10px 0;
+}
+
+.cgu footer {
+    padding: 20px 0;
+    background-color: #f8f9fa;
+    border-top: 1px solid #eaeaea;
+}
+
+.cgu footer a {
+    color: #6c757d;
+    text-decoration: none;
+}
+
+.cgu footer a:hover {
+    text-decoration: underline;
+}
+
+.cgu .mentions-legales {
+    padding: 20px 0;
+    background-color: #f8f9fa;
+    border-top: 1px solid #eaeaea;
+}
+
+.cgu .mentions-legales a {
+    color: #6c757d;
+    text-decoration: none;
+}
+
+.cgu .mentions-legales a:hover {
+    text-decoration: underline;
+}
+
+

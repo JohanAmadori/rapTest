@@ -1,0 +1,26 @@
+primordial:
+
+1)L'utilisateur ne doit pas pouvoir refaire le quizz (max:tentatives=1)
+
+secondaire:
+
+2)Le score s'initialise a 0 a chaque changement de page_rappeurs
+3)chaque rappeur doit avoir son fond d'ecran
+4)customiser profil user (pdp)
+
+idées:
+
+- Quiz général sur le rap
+- Achievements
+- Rajouter +1point lorsque 1ere ecoute musique 
+           +1point dl carte
+           +2 consultation classement
+- Animation achat carte dans boutique            
+
+
+
+
+REALISE:
+
+-L'utilisateur doit pouvoir acheter des cartes avec ses Points
+-Afficher classement des users selon leurs pts
