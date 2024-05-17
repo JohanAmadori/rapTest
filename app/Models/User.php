@@ -82,12 +82,17 @@ public function panier() {
 
 public function responses()
 {
-    return $this->hasMany(UserResponse::class);
+    return $this->hasMany(UserReponse::class);
+}
+
+public function paniers()
+{
+    return $this->hasMany(Panier::class); 
+
+
 }
 
 
+
+
 }
-
-
-
-

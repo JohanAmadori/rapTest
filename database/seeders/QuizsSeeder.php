@@ -22,7 +22,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Panama Bende",
             'reponse3' => "Scred Connexion",
             'reponse4' => "Collectif Metissé",
-            'reponse' => 2
+            'reponse' => 2,
+            'difficulte' => ""
+
         ]);
         DB::table('quizs')->insert([
             'rappeur_id'  => 5,
@@ -31,7 +33,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Samou Skuu",
             'reponse3' => "Venom",
             'reponse4' => "PLK",
-            'reponse' => 1
+            'reponse' => 1,
+            'difficulte' => ""
+
         ]);
         DB::table('quizs')->insert([
             'rappeur_id'  => 5,
@@ -40,7 +44,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Eric Zemmour",
             'reponse3' => "Christophe Castaner",
             'reponse4' => "Nicolas Sarkozy",
-            'reponse' => 3
+            'reponse' => 3,
+            'difficulte' => ""
+
         ]);
         DB::table('quizs')->insert([
             'rappeur_id'  => 5,
@@ -49,7 +55,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Decepticons",
             'reponse3' => "Haaland",
             'reponse4' => "Opp Block",
-            'reponse' => 1
+            'reponse' => 1,
+            'difficulte' => ""
+
         ]);
         DB::table('quizs')->insert([
             'rappeur_id'  => 5,
@@ -58,8 +66,11 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Butterfly Doors",
             'reponse3' => "Trashtalking",
             'reponse4' => "Boss Orders",
-            'reponse' => 3
+            'reponse' => 3,
+            'difficulte' => ""
+
         ]);
+
         /*LESRAM*/
         DB::table('quizs')->insert([
             'rappeur_id'  => 4,
@@ -68,7 +79,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "93",
             'reponse3' => "94",
             'reponse4' => "75",
-            'reponse' => 2
+            'reponse' => 2,
+            'difficulte' => ""
+
         ]);
         DB::table('quizs')->insert([
             'rappeur_id'  => 4,
@@ -77,7 +90,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Aladin 135",
             'reponse3' => "Zeu",
             'reponse4' => "Osirus Jack",
-            'reponse' => 3
+            'reponse' => 3,
+            'difficulte' => ""
+
         ]);
         DB::table('quizs')->insert([
             'rappeur_id'  => 4,
@@ -86,7 +101,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Wesh Enfoiré #5",
             'reponse3' => "Intro",
             'reponse4' => "Seum",
-            'reponse' => 3
+            'reponse' => 3,
+            'difficulte' => ""
+
         ]);
         DB::table('quizs')->insert([
             'rappeur_id'  => 4,
@@ -95,7 +112,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Julien",
             'reponse3' => "Régis",
             'reponse4' => "Aboubakar",
-            'reponse' => 1
+            'reponse' => 1,
+            'difficulte' => ""
+
         ]);
         DB::table('quizs')->insert([
             'rappeur_id'  => 4,
@@ -104,7 +123,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Wesh Enfoiré",
             'reponse3' => "G-31",
             'reponse4' => "Cri des momes",
-            'reponse' => 1
+            'reponse' => 1,
+            'difficulte' => ""
+
         ]);
 
         /*LAYLOW*/
@@ -116,7 +137,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Wit",
             'reponse3' => "Les Alchimistes" ,
             'reponse4' => "Kekra",
-            'reponse' => 4
+            'reponse' => 4,
+            'difficulte' => ""
+
         ]);
         DB::table('quizs')->insert([
             'rappeur_id'  => 6,
@@ -125,7 +148,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Lime",
             'reponse3' => "Toyotarola",
             'reponse4' => "Y2",
-            'reponse' => 2
+            'reponse' => 2,
+            'difficulte' => ""
+
         ]);
         DB::table('quizs')->insert([
             'rappeur_id'  => 6,
@@ -134,7 +159,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "RAW-Z",
             'reponse3' => "Trinity",
             'reponse4' => "Megatron",
-            'reponse' => 1
+            'reponse' => 1,
+            'difficulte' => ""
+
         ]);
 
         DB::table('quizs')->insert([
@@ -144,7 +171,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "~ 24.000",
             'reponse3' => "~ 30.000",
             'reponse4' => "~ 35.000",
-            'reponse' => 4
+            'reponse' => 4,
+            'difficulte' => ""
+
         ]);
         DB::table('quizs')->insert([
             'rappeur_id'  => 6,
@@ -153,7 +182,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "'Longue vie'",
             'reponse3' => "C'est pas Laylow qui dit ca",
             'reponse4' => "'.. DE BATARD'",
-            'reponse' => 3
+            'reponse' => 3,
+            'difficulte' => ""
+
         ]);
 
         /*FREEZE*/
@@ -165,7 +196,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Djibril",
             'reponse3' => "Lamine" ,
             'reponse4' => "Lorenzo",
-            'reponse' => 1
+            'reponse' => 1,
+            'difficulte' => ""
+
         ]);
         DB::table('quizs')->insert([
             'rappeur_id'  => 7,
@@ -174,7 +207,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Black Jack OBS",
             'reponse3' => "Lesram",
             'reponse4' => "La F",
-            'reponse' => 3
+            'reponse' => 3,
+            'difficulte' => ""
+
         ]);
         DB::table('quizs')->insert([
             'rappeur_id'  => 7,
@@ -183,7 +218,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "LMF",
             'reponse3' => "PBB",
             'reponse4' => "Aucun des 3",
-            'reponse' => 3
+            'reponse' => 3,
+            'difficulte' => ""
+
         ]);
 
         DB::table('quizs')->insert([
@@ -193,7 +230,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Gerald Darmanin",
             'reponse3' => "Rachida Dati",
             'reponse4' => "Roselyne Bachelot",
-            'reponse' => 4
+            'reponse' => 4,
+            'difficulte' => ""
+
         ]);
         DB::table('quizs')->insert([
             'rappeur_id'  => 7,
@@ -202,7 +241,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Sacrfice de Masse",
             'reponse3' => "Argent noir pt.3",
             'reponse4' => "S/o Congo pt.2",
-            'reponse' => 2
+            'reponse' => 2,
+            'difficulte' => ""
+
         ]); 
 
                 /*ROROLAMEUTE*/
@@ -214,7 +255,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Nasdas",
             'reponse3' => "Bengous" ,
             'reponse4' => "Mortadon",
-            'reponse' => 2
+            'reponse' => 2,
+            'difficulte' => ""
+
         ]);
         DB::table('quizs')->insert([
             'rappeur_id'  => 3,
@@ -223,7 +266,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "7/7",
             'reponse3' => "Train de vie",
             'reponse4' => "Toute la nuit",
-            'reponse' => 3
+            'reponse' => 3,
+            'difficulte' => ""
+
         ]);
         DB::table('quizs')->insert([
             'rappeur_id'  => 3,
@@ -232,7 +277,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Il m'en faut plus",
             'reponse3' => "On vient d'en bas",
             'reponse4' => "La Chienneté",
-            'reponse' => 1
+            'reponse' => 1,
+            'difficulte' => ""
+
         ]);
 
         DB::table('quizs')->insert([
@@ -242,7 +289,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "2",
             'reponse3' => "1",
             'reponse4' => "0",
-            'reponse' => 4
+            'reponse' => 4,
+            'difficulte' => ""
+
         ]);
         DB::table('quizs')->insert([
             'rappeur_id'  => 3,
@@ -251,7 +300,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Côtépass",
             'reponse3' => "La Meute",
             'reponse4' => "Freestyle Sauvage",
-            'reponse' => 3
+            'reponse' => 3,
+            'difficulte' => ""
+
         ]);
 
         /*HOUDI*/
@@ -263,7 +314,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Nuketown / 3",
             'reponse3' => "Grhunt #77 / 4" ,
             'reponse4' => "Nuketown / 4",
-            'reponse' => 3
+            'reponse' => 3,
+            'difficulte' => ""
+
         ]);
         DB::table('quizs')->insert([
             'rappeur_id'  => 1,
@@ -272,7 +325,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Guy2bezbar",
             'reponse3' => "34murphy",
             'reponse4' => "Aucun d'eux",
-            'reponse' => 4
+            'reponse' => 4,
+            'difficulte' => ""
+
         ]);
         DB::table('quizs')->insert([
             'rappeur_id'  => 1,
@@ -281,7 +336,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Non",
             'reponse3' => "Oui et il a deja fait un feat avec Grim",
             'reponse4' => "Oui, ",
-            'reponse' => 1
+            'reponse' => 1,
+            'difficulte' => ""
+
         ]);
 
         DB::table('quizs')->insert([
@@ -291,7 +348,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Dérapages",
             'reponse3' => "Woka",
             'reponse4' => "Pile ou face",
-            'reponse' => 1
+            'reponse' => 1,
+            'difficulte' => ""
+
         ]);
         DB::table('quizs')->insert([
             'rappeur_id'  => 1,
@@ -300,7 +359,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Belle chanson",
             'reponse3' => "Monaco",
             'reponse4' => "Sensation",
-            'reponse' => 2
+            'reponse' => 2,
+            'difficulte' => ""
+
         ]);        
         
 
@@ -314,7 +375,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Levallois Peret",
             'reponse3' => "Grigny" ,
             'reponse4' => "Corbeil",
-            'reponse' => 2
+            'reponse' => 2,
+            'difficulte' => ""
+
         ]);
         DB::table('quizs')->insert([
             'rappeur_id'  => 2,
@@ -323,7 +386,9 @@ class QuizsSeeder extends Seeder
             'reponse2' => "B1",
             'reponse3' => "Amen",
             'reponse4' => "Tours",
-            'reponse' => 4
+            'reponse' => 4,
+            'difficulte' => ""
+
         ]);
         DB::table('quizs')->insert([
             'rappeur_id'  => 2,
@@ -332,38 +397,126 @@ class QuizsSeeder extends Seeder
             'reponse2' => "Berlusconi",
             'reponse3' => "Franco",
             'reponse4' => "Fidel Castro, ",
-            'reponse' => 1
+            'reponse' => 1,
+            'difficulte' => ""
+
         ]);
 
         DB::table('quizs')->insert([
             'rappeur_id'  => 2,
-            'question' => "Dans quel son dit-il ? :'Le démon a pitié d'eux, il m'chuchote : 'laisse les vivre' ",
-            'reponse1' => "7734",
-            'reponse2' => "Dérapages",
-            'reponse3' => "Woka",
-            'reponse4' => "Pile ou face",
-            'reponse' => 3
+            'question' => "Quel est le morceau joué sur cette page ?",
+            'reponse1' => "Amen",
+            'reponse2' => "Call Of",
+            'reponse3' => "Scam",
+            'reponse4' => "Douleur des halls",
+            'reponse' => 2,
+            'difficulte' => ""
+
         ]);
         DB::table('quizs')->insert([
             'rappeur_id'  => 2,
-            'question' => "Quel est son clip le plus réussi visuellement? Completement objectif (non, c faux)",
-            'reponse1' => "Mode Hardcore",
-            'reponse2' => "Belle chanson",
-            'reponse3' => "Monaco",
-            'reponse4' => "Sensation",
-            'reponse' => 3
+            'question' => "Quel a est leur premier morceau ? ",
+            'reponse1' => "Pas de CDI",
+            'reponse2' => "Makavelik",
+            'reponse3' => "Block opposé",
+            'reponse4' => "Flingues & Voix",
+            'reponse' => 2,
+            'difficulte' => ""
+
         ]);  
+
+
+                /*TIF*/
+
+                DB::table('quizs')->insert([
+                    'rappeur_id'  => 8,
+                    'question' => "De quelle origine est-il ? ",
+                    'reponse1' => "Brésilien",
+                    'reponse2' => "Egyptien",
+                    'reponse3' => "Marocain" ,
+                    'reponse4' => "Algérien",
+                    'reponse' => 4,
+                    'difficulte' => ""
+
+                ]);
+                DB::table('quizs')->insert([
+                    'rappeur_id'  => 8,
+                    'question' => "Lequel de ces morceaux solo est-il le plus populaire ?",
+                    'reponse1' => ".38",
+                    'reponse2' => "La nuit",
+                    'reponse3' => "Hinata",
+                    'reponse4' => "Shadow Boxing",
+                    'reponse' => 3,
+                    'difficulte' => ""
+
+                ]);
+                DB::table('quizs')->insert([
+                    'rappeur_id'  => 8,
+                    'question' => "Dans quel clip, peut-on voir un laboratoire ?",
+                    'reponse1' => "Shadow Boxing,",
+                    'reponse2' => "Hinata",
+                    'reponse3' => "BZMOR",
+                    'reponse4' => "Amnesia",
+                    'reponse' => 1,
+                    'difficulte' => ""
+
+                ]);
+        
+                DB::table('quizs')->insert([
+                    'rappeur_id'  => 8,
+                    'question' => "",
+                    'reponse1' => "",
+                    'reponse2' => "",
+                    'reponse3' => "",
+                    'reponse4' => "",
+                    'reponse' => 4,
+                    'difficulte' => ""
+
+                ]);
+
+                DB::table('quizs')->insert([
+                    'rappeur_id'  => 8,
+                    'question' => "Avec lequel de ces rappeurs a-t-il deja featé ?",
+                    'reponse1' => "Soolking",
+                    'reponse2' => "Luidji",
+                    'reponse3' => "Rim-K",
+                    'reponse4' => "Khali",
+                    'reponse' => 3,
+                    'difficulte' => ""
+
+                ]);  
         
         
         /*QUIZZ GENERAL*/
 
         DB::table('quizs')->insert([
-            'question' => "TEST",
-            'reponse1' => "TEST",
-            'reponse2' => "TEST",
-            'reponse3' => "TEST",
-            'reponse4' => "TEST",
-            'reponse' => 3
+            'question' => "FACILE",
+            'reponse1' => "FACILE",
+            'reponse2' => "FACILE",
+            'reponse3' => "FACILE",
+            'reponse4' => "FACILE",
+            'reponse' => 3,
+            'difficulte' => "facile"
+        ]);  
+
+        DB::table('quizs')->insert([
+            'question' => "MOYEN",
+            'reponse1' => "MOYEN",
+            'reponse2' => "MOYEN",
+            'reponse3' => "MOYEN",
+            'reponse4' => "MOYEN",
+            'reponse' => 1,
+            'difficulte' => "moyen"
+        ]);  
+
+        DB::table('quizs')->insert([
+            'question' => "HARD",
+            'reponse1' => "HARD",
+            'reponse2' => "HARD",
+            'reponse3' => "HARD",
+            'reponse4' => "HARD",
+            'reponse' => 4,
+            'difficulte' => "difficile"
         ]);  
 
     }

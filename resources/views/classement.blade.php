@@ -6,18 +6,26 @@
     <title>Classement</title>
 </head>
 <body>
-    <h1>Classement des Utilisateurs</h1>
+
+@include('layouts.navigation')
+
+<br></br>
+
+<h1>USERS RANKING</h1>
+
     <table>
         <thead>
             <tr>
                 <th>Nom</th>
-                <th>Score</th>
+                <th>Valeur Collection</th>
+                <th>Points</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($users as $user)
                 <tr style="opacity: 0; transform: translateX(-100px); transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;">
                     <td>{{ $user->name }}</td>
+                    <td>{{ $user->paniers->sum('valeur') }}</td>
                     <td>{{ $user->points }}</td>
                 </tr>
             @endforeach

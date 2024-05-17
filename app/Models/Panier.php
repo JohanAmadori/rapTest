@@ -9,7 +9,7 @@ class Panier extends Model
     protected $table = 'paniers'; // Spécifiez le nom de la table si ce n'est pas le pluriel du nom du modèle
 
     protected $fillable = [
-        'user_id', 'articles_id', 'quantite','montant' // Les attributs que vous autorisez à être assignés massivement
+        'user_id', 'articles_id', 'quantite','valeur' // Les attributs que vous autorisez à être assignés massivement
     ];
 
     // Relation avec le modèle User

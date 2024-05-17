@@ -1,0 +1,33 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    width: 80%;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+h1 {
+    color: #333;
+    text-align: center;
+}
+.music-item {
+    display: flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-bottom: 5px;
+    color: #666;
+    font-size: 16px;
+}
+.music-item .rank {
+    font-size: 24px;
+    font-weight: bold;
+    color: #6d544d;
+    margin-right: 20px;
+    width: 50px; /* Fixe la largeur pour aligner les numéros */
+}

@@ -58,11 +58,19 @@
     <p>Aucune carte disponible pour le moment.</p>
 @endif
 
-
             </div>
         </div>
     </section>
     </div> 
+
+    @include('footer')
+
+    @if(session('boutique'))
+    <div class="alert alert-danger">
+        {{ session('boutique') }}
+    </div>
+@endif
+
 
 </body>
 </html>

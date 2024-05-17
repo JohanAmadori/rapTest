@@ -2844,7 +2844,7 @@ textarea.form-control-lg {
 }
 
 .btn-primary {
-  --bs-btn-color: #fff;
+  --bs-btn-color: blue!important;
   --bs-btn-bg: #0d6efd;
   --bs-btn-border-color: #0d6efd;
   --bs-btn-hover-color: #fff;
@@ -10823,12 +10823,11 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
-
-
   
   .border{
     border: none !important;
   }
+
 
 
 }

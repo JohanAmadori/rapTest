@@ -39,10 +39,11 @@ class BoutiqueController extends Controller
         // Vérifier si l'article est déjà dans le panier de l'utilisateur
         $panierExist = $user->panier()->where('articles_id', $article->id)->exists();
     
-        // Si l'article est déjà dans le panier, afficher un message d'erreur
+
         if ($panierExist) {
-            return redirect()->back()->with('error', 'Vous avez déjà cet article dans votre panier.');
+            return redirect()->route('boutique')->with('error', 'Vous avez déjà cet article dans votre panier.');
         }
+        
     
         if ($user->points >= $article->prix_public) {
             $user->points -= $article->prix_public; // Déduire les points
@@ -50,8 +51,9 @@ class BoutiqueController extends Controller
     
             // Ajouter l'article au panier 
             $user->panier()->attach($article->id, [
-                'quantite' => 1,
-                //'montant' => $article->prix_public 
+                'quantite' => 1,                
+                'valeur' => $article->prix_public 
+                
             ]);        
     
             return redirect()->route('cartes')->with('success', 'Article acheté.');
@@ -60,7 +62,15 @@ class BoutiqueController extends Controller
         return back()->with('error', 'Pas assez de points pour cet achat.');
     }
     
+    public function showPaniers()
+{
+    // Charger les paniers avec les articles, en triant les articles par prix_public
+    $paniers = Panier::with(['article' => function ($query) {
+        $query->orderBy('prix_public', '');
+    }])->get();
 
+    return view('cartes', compact('paniers'));
+}
     
     
 }

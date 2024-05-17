@@ -7,9 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Models\User;
-
 use App\Models\UserReponse;
-
 use Illuminate\Database\QueryException;
 
 
@@ -18,15 +16,14 @@ class QuizController extends Controller
 {
     public function showQuiz($quizId)
     {                
-        $user = auth()->user();
+        $user = auth()->user();        
     }  
 
     public function quiz_general()
 {
-    $quizs = Quiz::whereNull('rappeur_id')->get(); // Fetch quizzes without a rapper ID
+    $quizs = Quiz::whereNull('rappeur_id')->get(); 
     return view('quiz_general', compact('quizs'));
 }
-
    
 
 public function verifyAnswer(Request $request)
@@ -35,7 +32,7 @@ public function verifyAnswer(Request $request)
     $selectedAnswer = $request->input('answer_index');
     $question = Quiz::find($questionId);
 
-    $user = auth()->user(); // Obtient l'utilisateur authentifié
+    $user = auth()->user(); 
 
     if (!$question) {
         return response()->json(['error' => 'Question non trouvée.']);
@@ -60,6 +57,11 @@ public function verifyAnswer(Request $request)
     session()->push('answered_questions', $questionId);
 
     return response()->json(['correct' => $isCorrect, 'score' => $score]);
+
+
+    $user->user_reponses()->attach($quiz->id, [
+        'question_id'  => $quiz->id               
+    ]);       
 }
 
 
@@ -88,8 +90,15 @@ public function showLeaderboard()
 
 
 
+public function getQuestionsByDifficulty(Request $request)
+{
+    $difficulty = $request->input('difficulty'); // Récupérer la difficulté depuis la requête
+    $questions = Quiz::where('difficulte', $difficulty)->get(); // Filtrer les questions par difficulté
 
-    
+    // Retourner la vue avec les questions
+    return view('quiz.questions', compact('questions'))->render();
+}
+
 
 
 

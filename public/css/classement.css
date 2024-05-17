@@ -1,7 +1,6 @@
 /* classement.css */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 20px;
     color: #333;
@@ -10,6 +9,8 @@ body {
 h1 {
     text-align: center;
     color: #333;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+    font-size: 35px!important;
 }
 
 table {

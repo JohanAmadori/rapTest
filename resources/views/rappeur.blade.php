@@ -55,16 +55,19 @@
     <div class="quiz-question" data-question-id="{{ $quiz->id }}"div id="quiz-container">
         <p>{{ $quiz->question }}</p>
         <ul class="answers">
-            <li action="{{ route('quiz.enregistrerReponse', $quiz->id) }}" method="POST">@csrf<button class="reponse" data-question-id="{{ $quiz->id }}" data-answer-index="1">{{ $quiz->reponse1 }}</button></li>
-            <li action="{{ route('quiz.enregistrerReponse', $quiz->id) }}" method="POST">@csrf<button class="reponse" data-question-id="{{ $quiz->id }}" data-answer-index="2">{{ $quiz->reponse2 }}</button></li>
-            <li action="{{ route('quiz.enregistrerReponse', $quiz->id) }}" method="POST">@csrf<button class="reponse" data-question-id="{{ $quiz->id }}" data-answer-index="3">{{ $quiz->reponse3 }}</button></li>
-            <li action="{{ route('quiz.enregistrerReponse', $quiz->id) }}" method="POST">@csrf<button class="reponse" data-question-id="{{ $quiz->id }}" data-answer-index="4">{{ $quiz->reponse4 }}</button></li>
+            <li button class="reponse" data-question-id="{{ $quiz->id }}" data-answer-index="1">{{ $quiz->reponse1 }}</button></li>
+            <li button class="reponse" data-question-id="{{ $quiz->id }}" data-answer-index="2">{{ $quiz->reponse2 }}</button></li>
+            <li button class="reponse" data-question-id="{{ $quiz->id }}" data-answer-index="3">{{ $quiz->reponse3 }}</button></li>
+            <li button class="reponse" data-question-id="{{ $quiz->id }}" data-answer-index="4">{{ $quiz->reponse4 }}</button></li>
         </ul>
     </div>
 </div>    
 </div>
 
 @endforeach
+
+
+
 
 
 <script>
@@ -141,7 +144,7 @@ $(document).ready(function() {
                     setTimeout(function() {
                         scoreContainer.css('transform', '');
                     }, 1000);
-                    button.css({'background-color': 'green', 'color': 'white'});
+                    button.css({'background-color': 'green', 'color': 'white','border-color':'lime'});
                     
                 } else {
                     scoreContainer.css('background-color', 'red');
@@ -247,9 +250,7 @@ window.onbeforeunload = function() {
     </script>
 
 
-    <div class="footer">
-    <a href="/legal" class="mentions-legales">Mentions légales</a>
-    </div>
+@include('footer')
 
 
 

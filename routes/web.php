@@ -10,7 +10,7 @@ use App\Http\Controllers\RappeurController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\BoutiqueController;
 
-
+use App\Http\Controllers\FooterController;
 use App\Http\Controllers\LegalController;
 use App\Http\Controllers\ArticleController;
 
@@ -19,6 +19,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\QuizzAttempsController;
 use App\Http\Controllers\ReponseController;
 
+use App\Http\Controllers\TopController;
 
 
 use App\Models\Rappeur;
@@ -44,6 +45,10 @@ Route::get('/',[WelcomeController::class,'register']);
 Route::get('/accueil',[WelcomeController::class,'accueil']);
 Route::get('/legal', [LegalController::class, 'legal']);
 
+Route::get('/footer', [FooterController::class, 'footer']);
+
+Route::get('/top', [TopController::class, 'top']);
+
 
 Route::get('/boutique',[BoutiqueController::class,'boutique']);
 Route::get('/cartes',[BoutiqueController::class,'cartes']);
@@ -61,6 +66,13 @@ Route::get('/classement', [UserController::class, 'index'])->name('classement');
 Route::get('/cartes', [CartController::class, 'showCart'])->name('cartes');
 
 Route::post('/quiz/enregistrerReponse', [QuizController::class, 'enregistrerReponse'])->name('quiz.enregistrerReponse');
+
+
+Route::get('/quiz/questions', 'QuizController@getQuestionsByDifficulty')->name('quiz.getQuestionsByDifficulty');
+
+
+
+
 
 
 

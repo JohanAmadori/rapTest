@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('password');
             $table->integer('points')->default(0);
             $table->string('profile_picture')->nullable();
-            $table->integer('tentatives')->default(0);
+
+
             $table->rememberToken();
             $table->timestamps();
         });

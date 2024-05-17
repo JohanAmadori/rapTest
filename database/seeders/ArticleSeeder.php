@@ -22,6 +22,15 @@ class ArticleSeeder extends Seeder
 
         ]);
 
+
+        DB::table('articles')->insert([
+            'nom'  => 'Alpha Wann',
+            'note' => 92,
+            'prix_public' => 95,
+            'img'=> 'pictures/' . 'alpha.png',
+
+        ]);
+
         DB::table('articles')->insert([
             'nom'  => 'Alkpote',
             'note' => 90,

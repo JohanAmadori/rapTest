@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('accueil') }}">
                         <img src="/pictures/logo.png" class="w-20 h-20" alt="Logo">
                     </a>
                 </div>
@@ -22,13 +22,19 @@
                         {{ __('Accueil') }}
                     </x-nav-link>
 
+                    <x-slot name="content">
+
                     <x-nav-link :href="route('boutique')" :active="request()->routeIs('boutique')">
                         {{ __('Boutique') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('cartes')" :active="request()->routeIs('cartes')">
-                        {{ __('Cartes') }}
-                    </x-nav-link>
+                    
+                        <x-nav-link :href="route('cartes')">
+                            {{ __('Cartes') }}
+                        </x-nav-link>
+
+                        
+
 
                     <x-nav-link :href="route('classement')" :active="request()->routeIs('classement')">
                         {{ __('Classement') }}
@@ -86,7 +92,7 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                            {{ __('Profil') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -96,7 +102,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Se deconnecter') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>

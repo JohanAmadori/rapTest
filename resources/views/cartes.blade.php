@@ -10,6 +10,7 @@
     
 @include('layouts.navigation')
 
+
 @if(isset($paniers) && $paniers->isNotEmpty())
     <?php $sortedPaniers = $paniers->sortBy(function ($panier) {
         return $panier->article->prix_public;
@@ -21,9 +22,12 @@
             </div>
         @endforeach
     </div>
+    <!-- Compteur affichant le nombre de cartes possédées et le total d'articles disponibles -->
+    <div id="compteur">Taille collection : {{ $paniers->count() }} / {{ $articles->count() }}</div>
 @else
     <p>Vous ne possédez aucune carte.</p>
 @endif
+
 
 </body>
 </html>

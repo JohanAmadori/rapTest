@@ -55,5 +55,7 @@
     <h2>7. Contact</h2>
     <p>Pour toute question ou préoccupation concernant ces CGU, veuillez nous contacter à <a href="mailto:johan.amadori@gmail.com"></a>johan.amadori@gmail.com</p>
     </div>
+
+    @include('footer')
 </body>
 </html>
