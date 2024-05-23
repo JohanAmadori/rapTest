@@ -55,5 +55,7 @@ Les tables sont créées sous forme de migrations.
 
 ## Contraintes
 
-- Le design doit être responsive
-- Un invité doit pouvoir cons
+- Le design doit etre responsive
+- Un guest doit pouvoir consulter le site
+- Absolument tout doit etre stocké dans la BDD  
+
