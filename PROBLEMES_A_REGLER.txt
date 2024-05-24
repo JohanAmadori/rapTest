@@ -5,8 +5,7 @@ primordial:
 secondaire:
 
 2)Le score s'initialise a 0 a chaque changement de page_rappeurs
-3)chaque rappeur doit avoir son fond d'ecran
-4)customiser profil user (pdp)
+
 
 idées:
 

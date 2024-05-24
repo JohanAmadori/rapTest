@@ -41,8 +41,10 @@ use App\Http\Controllers\Front\{
 */
 
 
-Route::get('/',[WelcomeController::class,'register']);
-Route::get('/accueil',[WelcomeController::class,'accueil']);
+Route::get('/', [WelcomeController::class, 'accueil'])->name('home');
+Route::get('/accueil', [WelcomeController::class, 'accueil'])->name('accueil');
+
+
 Route::get('/legal', [LegalController::class, 'legal']);
 
 Route::get('/footer', [FooterController::class, 'footer']);
@@ -157,15 +159,10 @@ Route::post('/answer/{questionId}', [QuizController::class, 'answerQuestion']);
 
 
 
-
-
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('accueil');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/accueil', function () {
-    return view('accueil');
-})->middleware(['auth', 'verified'])->name('accueil');
 
 Route::post('/boutique', function () {
     return view('boutique');

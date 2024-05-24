@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model; 
 use App\Models\Articles;
+use App\Models\UserReponse;
 
 class User extends Authenticatable
 {
@@ -70,20 +71,20 @@ public function points()
     return $this->points; // Assurez-vous que `points` est un champ valide dans la base de données.
 }
 
-public function panier() {
+public function panier()
+{
     return $this->belongsToMany(Articles::class, 'paniers')
-                ->withPivot('quantite')
+                ->withPivot('quantite', 'valeur')
                 ->withTimestamps();
-
-                return $this->belongsToMany(Articles::class, 'panier', 'user_id', 'article_id');
-                        
 }
 
-
-public function responses()
+public function reponses()
 {
     return $this->hasMany(UserReponse::class);
 }
+
+
+
 
 public function paniers()
 {
@@ -91,6 +92,12 @@ public function paniers()
 
 
 }
+
+public function getTotalValeurAttribute()
+{
+    return $this->paniers->sum('valeur');
+}
+
 
 
 

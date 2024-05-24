@@ -166,25 +166,21 @@
 
 /* Appliquer des styles généraux à chaque bloc de question du quiz */
 .quiz-question {
-  --correct-color: rgb(9, 187, 69);
-  --incorrect-color: rgb(245, 48, 48);
-  --selected-color: green;
-  --disabled-color: rgb(219, 219, 219);
-  --disabled-correct-color: rgb(118, 212, 149);
-  --disabled-incorrect-color: rgb(221, 131, 131);
-  min-height: max-content;
-  padding: 1em;
-  border: 1px solid var(--selected-color);
-  border-radius: 10px;
-  font-family: Arial, Helvetica, sans-serif;
-  max-width: 650px;
-  display: flex;
-  flex-direction: column; /* Alignez le contenu en colonne */
-  align-items: center; /* Centrez les enfants horizontalement */
-  text-align: center; /* Centrez le texte à l'intérieur */
-  margin: auto; /* Centrez la question horizontalement */
-  margin-bottom: 20px;
-  font-family: "DM Sans", sans-serif;
+  width: 100%; /* Utilise toute la largeur disponible */
+  padding: 15px; /* Ajoute un peu d'espace autour du texte pour la lisibilité */
+  box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur définie */
+  margin-bottom: 20px; /* Espacement entre les questions */
+}
+
+.reponse {
+  width: 100%; /* Les boutons utilisent toute la largeur disponible */
+  padding: 10px 20px; /* Espacement adéquat pour toucher facilement sur mobile */
+  font-size: 16px; /* Taille de police adaptée pour la lisibilité */
+  margin: 5px 0; /* Espacement vertical entre les boutons */
+  background-color: #007BFF; /* Couleur de fond pour les boutons */
+  color: white; /* Couleur du texte pour les boutons */
+  border: none; /* Aucune bordure pour un look plus moderne */
+  border-radius: 5px; /* Bordures arrondies */
 }
 
 /* Style pour la liste des réponses */
@@ -193,18 +189,7 @@
   padding: 0; /* supprime le padding par défaut */
 }
 
-/* Style pour chaque bouton de réponse */
-.reponse {
-  display: block; /* rend chaque réponse un élément de bloc pour prendre sa propre ligne */
-  width: 100%; /* largeur totale de son conteneur */
-  padding: 0.5em; /* padding à l'intérieur du bouton */
-  margin: 0.5em 0; /* marge pour l'espacement entre les boutons */
-  background: linear-gradient(115deg, rgb(0, 0, 0) 5.8%, rgb(178, 14, 14) 112.6%);
-  color: white; /* couleur du texte */
-  border: 1px solid #ccc; /* couleur de la bordure */
-  border-radius: 5px; /* coins arrondis */
-  font-family: "DM Sans", sans-serif;
-}
+
 
 .reponse:hover {
   background-color: var(--selected-color); /* couleur de fond au survol */
@@ -373,5 +358,31 @@ button.grise {
 .quiz-question.show {
   opacity: 1; /* Show when 'show' class is added */
   animation: scale 0.5s ease-in-out;
+}
+
+
+@media (max-width: 430px) {
+  .quiz-question {
+      font-size: 12px; /* Taille de police encore plus petite pour les mobiles */
+      width:350px;
+  }
+
+  .reponse {
+      font-size: 12px; /* Adaptation de la taille de la police pour les mobiles */
+      width:140px;
+  }
+
+  .img.carte {
+    width:200px !important;
+
+}
+
+/* Media query pour les écrans de moins de 600px */
+@media (max-width: 600px) {
+  #scoreContainer {
+      display: none;  /* Cache le scoreContainer sur les petits écrans */
+  }
+}
+
 }
 

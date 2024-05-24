@@ -27,43 +27,51 @@ class QuizController extends Controller
    
 
 public function verifyAnswer(Request $request)
-{
-    $questionId = $request->input('question_id');
-    $selectedAnswer = $request->input('answer_index');
-    $question = Quiz::find($questionId);
+    {
+        $questionId = $request->input('question_id');
+        $selectedAnswer = $request->input('answer_index');
+        $question = Quiz::find($questionId);
 
-    $user = auth()->user(); 
+        $user = auth()->user();
 
-    if (!$question) {
-        return response()->json(['error' => 'Question non trouvée.']);
-    }       
+        if (!$question) {
+            return response()->json(['error' => 'Question non trouvée.']);
+        }
 
-    $user = auth()->user();
-    if (!$user) {
-        return response()->json(['error' => 'Utilisateur non connecté.']);
+        if (!$user) {
+            return response()->json(['error' => 'Utilisateur non connecté.']);
+        }
+
+        // Vérifiez si l'utilisateur a déjà répondu à cette question
+        $exists = UserReponse::where('user_id', $user->id)
+            ->where('question_id', $questionId)
+            ->exists();
+
+        if ($exists) {
+            return response()->json(['error' => 'Vous avez déjà répondu à cette question.']);
+        }
+
+        // Enregistrer la réponse de l'utilisateur dans la table user_reponses
+        UserReponse::create([
+            'user_id' => $user->id,
+            'question_id' => $questionId,
+            'answer' => $selectedAnswer, // Enregistrer la réponse sélectionnée
+        ]);
+
+        // Vérifier si la réponse est correcte
+        $isCorrect = $selectedAnswer == $question->reponse;
+
+        // Mettre à jour le score si la réponse est correcte
+        $score = session('score', 0);
+        if ($isCorrect) {
+            $score += 2;
+            session(['score' => $score]);
+            $user->increment('points', 2);
+        }
+
+        // Retourner la réponse JSON
+        return response()->json(['correct' => $isCorrect, 'score' => $score]);
     }
-
-    $isCorrect = $selectedAnswer == $question->reponse;
-    
-    
-    // Mettre à jour le score
-    $score = session('score', 0);
-    if ($isCorrect) {
-        $score++;
-        session(['score' => $score]);
-        $user->increment('points');
-    }
-
-    session()->push('answered_questions', $questionId);
-
-    return response()->json(['correct' => $isCorrect, 'score' => $score]);
-
-
-    $user->user_reponses()->attach($quiz->id, [
-        'question_id'  => $quiz->id               
-    ]);       
-}
-
 
     public function checkAnswer(Request $request)
     {
@@ -98,6 +106,9 @@ public function getQuestionsByDifficulty(Request $request)
     // Retourner la vue avec les questions
     return view('quiz.questions', compact('questions'))->render();
 }
+
+
+
 
 
 

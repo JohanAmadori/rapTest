@@ -53,16 +53,11 @@
 
     <div class="R"> 
         <a href="{{ url('rappeur/8')}}">
-            <img src="{{ asset('vignettes/tif.jpg')}}" class="vignettes">
+            <img src="{{ asset('vignettes/alpha.jpg')}}" class="vignettes">
         </a>
     </div>
 
-    <br></br>
-       
-
-    
+    <br></br>   
 
 </body>
-
-
 </html>

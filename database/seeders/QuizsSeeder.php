@@ -426,49 +426,49 @@ class QuizsSeeder extends Seeder
         ]);  
 
 
-                /*TIF*/
+                /*ALPHA WANN*/
 
                 DB::table('quizs')->insert([
                     'rappeur_id'  => 8,
-                    'question' => "De quelle origine est-il ? ",
-                    'reponse1' => "Brésilien",
-                    'reponse2' => "Egyptien",
-                    'reponse3' => "Marocain" ,
-                    'reponse4' => "Algérien",
-                    'reponse' => 4,
+                    'question' => "Lors du Rap 1er Contenders qui a-t-il affronté ? ",
+                    'reponse1' => "Jazzy Bazz",
+                    'reponse2' => "Lunik",
+                    'reponse3' => "Gaiden" ,
+                    'reponse4' => "Wojtek",
+                    'reponse' => 2,
                     'difficulte' => ""
 
                 ]);
                 DB::table('quizs')->insert([
                     'rappeur_id'  => 8,
-                    'question' => "Lequel de ces morceaux solo est-il le plus populaire ?",
-                    'reponse1' => ".38",
-                    'reponse2' => "La nuit",
-                    'reponse3' => "Hinata",
-                    'reponse4' => "Shadow Boxing",
-                    'reponse' => 3,
-                    'difficulte' => ""
-
-                ]);
-                DB::table('quizs')->insert([
-                    'rappeur_id'  => 8,
-                    'question' => "Dans quel clip, peut-on voir un laboratoire ?",
-                    'reponse1' => "Shadow Boxing,",
-                    'reponse2' => "Hinata",
-                    'reponse3' => "BZMOR",
-                    'reponse4' => "Amnesia",
+                    'question' => "Quel est le nom de son premier EP solo ?",
+                    'reponse1' => "Alph Lauren",
+                    'reponse2' => "PPP",
+                    'reponse3' => "Don Dada Mixtape",
+                    'reponse4' => "En sous-marin",
                     'reponse' => 1,
+                    'difficulte' => ""
+
+                ]);
+                DB::table('quizs')->insert([
+                    'rappeur_id'  => 8,
+                    'question' => "De quel origine est-il ?",
+                    'reponse1' => "Angolais",
+                    'reponse2' => "Senegalais",
+                    'reponse3' => "Camerounais",
+                    'reponse4' => "Guinéen",
+                    'reponse' => 4,
                     'difficulte' => ""
 
                 ]);
         
                 DB::table('quizs')->insert([
                     'rappeur_id'  => 8,
-                    'question' => "",
-                    'reponse1' => "",
-                    'reponse2' => "",
-                    'reponse3' => "",
-                    'reponse4' => "",
+                    'question' => "De quel son vient: 'J’essaie d’oublier mais oublier c’est plus dur qu’apprendre'?",
+                    'reponse1' => "Compte les hommes",
+                    'reponse2' => "Vortex",
+                    'reponse3' => "Carrelage italien",
+                    'reponse4' => "Vynile",
                     'reponse' => 4,
                     'difficulte' => ""
 
@@ -476,12 +476,12 @@ class QuizsSeeder extends Seeder
 
                 DB::table('quizs')->insert([
                     'rappeur_id'  => 8,
-                    'question' => "Avec lequel de ces rappeurs a-t-il deja featé ?",
-                    'reponse1' => "Soolking",
-                    'reponse2' => "Luidji",
-                    'reponse3' => "Rim-K",
-                    'reponse4' => "Khali",
-                    'reponse' => 3,
+                    'question' => "Qui a dit a propos d'Alpha Wann : 'Il a la science du rap' ?",
+                    'reponse1' => "PLK",
+                    'reponse2' => "Mister V",
+                    'reponse3' => "Raska",
+                    'reponse4' => "Victor Wenbanyama",
+                    'reponse' => 2,
                     'difficulte' => ""
 
                 ]);  

@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('user_reponses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('quiz_id');
-            $table->unsignedBigInteger('question_id');
-            $table->string('reponse');
+            $table->foreignId('user_id');
+            $table->foreignId('question_id')->unique;
             $table->timestamps();
-    
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('quiz_id')->references('id')->on('quizs')->onDelete('cascade');
+
+            $table->unique(['user_id', 'question_id']); // Contrainte unique pour éviter les réponses multiples  
+            
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('question_id')->references('id')->on('quizs');
         });
     }
     

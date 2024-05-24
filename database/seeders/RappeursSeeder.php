@@ -105,15 +105,15 @@ class RappeursSeeder extends Seeder
         ]);
 
         DB::table('rappeurs')->insert([
-            'nom'  => 'Tif',
-            'note_globale' => 83,
-            'vignette'=> 'tif.jpg',
-            'picture'=> '',
+            'nom'  => 'Alpha Wann',
+            'note_globale' => 92,
+            'vignette'=> 'alpha.jpg',
+            'picture'=> 'alpha.png',
             'lien' => 'rappeur/7',
-            'musique' => 'tif.mp3',
-            'spotify' => 'https://open.spotify.com/intl-fr/artist/2NgTPluNpfsoYZnoeU2VsH',
-            'insta' => 'https://www.instagram.com/the.tif/',
-            'youtube' => 'https://www.youtube.com/@The_tif',
+            'musique' => 'alpha.mp3',
+            'spotify' => 'https://open.spotify.com/intl-fr/artist/7yeFMUrYTY5cAZx0GKXnti',
+            'insta' => 'https://www.instagram.com/alphawann/',
+            'youtube' => 'https://www.youtube.com/user/DonDadaTelevision',
         ]);
     }
 }

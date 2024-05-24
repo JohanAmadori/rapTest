@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('quantite')->default(1);
             $table->decimal('valeur', 10, 2)->default(0);  
             $table->timestamps();
+
         });
         
         

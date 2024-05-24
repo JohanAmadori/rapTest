@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+    public function cartes()
+    {
+        return view('cartes');
+    }
+
     public function index()
     {
         return view('cartes', ['cartes' => session('cartes', [])]);
@@ -36,7 +41,7 @@ class CartController extends Controller
     
             return view('cartes', ['paniers' => $paniers,'articles' => $articles]);
         } else {
-            return redirect('login');  // Redirige vers la page de connexion si l'utilisateur n'est pas connecté
+            return redirect('login');  
         }
     }
     

@@ -1,0 +1,19 @@
+Accueil amène à login
+
+
+
+Refaire une image de fond en jpg compressé de taille 2000 de large
+Les images de rappeurs à redimensionner toutes à la même taille (500 de large)
+
+Figer la question (hover) une fois répondu
+Contrôler la complexité du password
+
+
+Après avoir cliqué une réponse, mettre la bordure en 2pixels
+Empêcher l'utilisateur de faire 2 fois le même quizz
+
+Adapter les données (nombre de points) pour pouvoir tester le jour de l'examen
+
+Menu: Mes cartes
+
+Message debloquage

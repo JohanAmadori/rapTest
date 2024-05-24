@@ -72,6 +72,14 @@ class ArticleSeeder extends Seeder
         ]);
 
         DB::table('articles')->insert([
+            'nom'  => 'Vald',
+            'note' => 87,
+            'prix_public' => 70,
+            'img'=> 'pictures/' . '',
+
+        ]);
+
+        DB::table('articles')->insert([
             'nom'  => 'Laylow',
             'note' => 86,
             'prix_public' => 65,
@@ -104,14 +112,6 @@ class ArticleSeeder extends Seeder
         ]);
 
         DB::table('articles')->insert([
-            'nom'  => 'i300 ',
-            'note' => 82,
-            'prix_public' => 50,
-            'img'=> 'pictures/' . 'i300.png',
-
-        ]);
-
-        DB::table('articles')->insert([
             'nom'  => 'Houdi ',
             'note' => 82,
             'prix_public' => 50,
@@ -119,6 +119,13 @@ class ArticleSeeder extends Seeder
 
         ]);
 
+        DB::table('articles')->insert([
+            'nom'  => 'i300 ',
+            'note' => 80,
+            'prix_public' => 50,
+            'img'=> 'pictures/' . 'i300.png',
+
+        ]);
 
         DB::table('articles')->insert([
             'nom'  => 'Roro La Meute ',
@@ -128,12 +135,5 @@ class ArticleSeeder extends Seeder
 
         ]);
 
-        DB::table('articles')->insert([
-            'nom'  => 'Zitoune',
-            'note' => 74,
-            'prix_public' => 35,
-            'img'=> 'pictures/' . 'zitoune.png',
-
-        ]);
     }    
 }
