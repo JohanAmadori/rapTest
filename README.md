@@ -10,6 +10,8 @@
 
 Les tables sont créées sous forme de migrations.
 
+[bdd.JPG]
+
 **Migrations créées :**
 - `users`
 - `articles`
