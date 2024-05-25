@@ -10,7 +10,7 @@
 
 Les tables sont créées sous forme de migrations.
 
-![Base de données](bdd.JPG)
+![Base de données](photos/bdd.JPG)
 
 
 **Migrations créées :**
@@ -68,11 +68,19 @@ Les tables sont créées sous forme de migrations.
 
 L'utilisateur peut répondre aux quizs personnalisés de chaque artistes, en les selectionnant dans la page "Accueil", cela le redirigera vers une page "Rappeur".
 
+![Accueil](photos/accueilrap.JPG)
+
 **Page Rappeur**
 
 L'utilisateur peut télécharger la carte de l'artiste, ecouter sa musique et la télécharger. Il a également la possibilité de consulter ses réseaux sociaux.
 Le quiz est disponible en dessous, incluant 5 questions sur la carrière de l'artiste.
 Chaque réponse correcte lui attribura des points (2 en l'occurance).
+
+![Rappeur](photos/carterappeur.JPG)
+
+![Music/Reseaux](photos/music-reseaux.JPG)
+
+![Question](photos/question.JPG)
 
 Avec les points engrangés par ces quizs, l'utilisateur pourra acheter des cartes de chaque artiste pour les rajouter a sa collection dans la page "Cartes".
 
