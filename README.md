@@ -2,13 +2,15 @@
 
 ## Contexte et besoins
 
-**rapTest** est un site développé en PHP avec le framework Laravel, il s'agit d'un site de quiz ayant pour thème la musique.
+**rapTest** est un site développé en PHP avec le framework Laravel, il s'agit d'un site de quizs ayant comme thème la musique.
+
+L'utilisateur devra pouvoir repondre à des quizs et acheter les articles de la Boutique, pour se faire un système de points users doit etre mis en place.
 
 ## Réalisations
 
 ### Base de données rapTest
 
-Les tables sont créées sous forme de migrations.
+Les tables sont créées avec des migrations.
 
 ![Base de données](photos/bdd.JPG)
 
