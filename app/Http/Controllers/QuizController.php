@@ -28,6 +28,11 @@ class QuizController extends Controller
 
 public function verifyAnswer(Request $request)
     {
+
+        if (auth()->guest()) {
+            return redirect()->route('rappeur')->with('login_error', 'Veuillez vous connecter pour continuer.');
+        }
+
         $questionId = $request->input('question_id');
         $selectedAnswer = $request->input('answer_index');
         $question = Quiz::find($questionId);
@@ -48,7 +53,7 @@ public function verifyAnswer(Request $request)
             ->exists();
 
         if ($exists) {
-            return response()->json(['error' => 'Vous avez déjà répondu à cette question.']);
+            return redirect()->route('rappeur')->with('already_response','Vous avez deja repondu à cette question.');
         }
 
         // Enregistrer la réponse de l'utilisateur dans la table user_reponses
@@ -64,9 +69,9 @@ public function verifyAnswer(Request $request)
         // Mettre à jour le score si la réponse est correcte
         $score = session('score', 0);
         if ($isCorrect) {
-            $score += 2;
+            $score += 10;
             session(['score' => $score]);
-            $user->increment('points', 2);
+            $user->increment('points', 10);
         }
 
         // Retourner la réponse JSON

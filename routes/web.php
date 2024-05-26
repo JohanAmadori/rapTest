@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\Auth\PasswordController;
+
+
+
+
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
@@ -148,8 +153,12 @@ Route::get('/leaderboard', [QuizController::class, 'showLeaderboard'])->name('le
 Route::get('/rappeur', [RappeurController::class, 'index']);
 
 
+Route::put('/user/password', [PasswordController::class, 'update'])->middleware('auth')->name('user-password.update');
 
 
+Route::post('/boutique/articles', [BoutiqueController::class, 'createArticle'])->name('boutique.createArticle');
+Route::put('/boutique/articles/{id}', [BoutiqueController::class, 'updateArticle'])->name('boutique.updateArticle');
+Route::delete('/boutique/articles/{id}', [BoutiqueController::class, 'deleteArticle'])->name('boutique.deleteArticle');
 
 
 Route::post('/update-points', [UserController::class, 'updatePoints']);

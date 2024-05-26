@@ -51,10 +51,6 @@
                         {{ __('Boutique') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('cartes')" :active="request()->routeIs('cartes')">
-                        {{ __('Cartes') }}
-                    </x-nav-link>
-
                     <x-nav-link :href="route('register')" :active="request()->routeIs('register')">
                         {{ __('Inscription') }}
                     </x-nav-link>
@@ -149,7 +145,6 @@
             <x-responsive-nav-link :href="route('boutique')" :active="request()->routeIs('boutique')">
             {{ __('Boutique') }}
             </x-responsive-nav-link>
-
         </div>
 
         @endguest

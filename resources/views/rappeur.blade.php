@@ -214,6 +214,21 @@ window.onbeforeunload = function() {
 
  <!-- JAVASCRIPT -->   
 
+ @if (session('login_error'))
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'error',
+                title: 'Erreur',
+                text: "{{ session('login_error') }}",
+                footer: '<a href="{{ route("login") }}" class="swal2-confirm swal2-styled" style="display: inline-block;">Se connecter</a>',
+                showConfirmButton: false
+            });
+        });
+    </script>
+@endif
+
 
  <script>
         function changeState(x, songName){
@@ -239,6 +254,22 @@ window.onbeforeunload = function() {
         }
 
     </script>
+
+
+@if (session('already_response'))
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script>
+        console.log("SweetAlert script is running");  // Ajoutez ceci pour vérifier le chargement du script
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'error',
+                title: 'Erreur',
+                text: "{{ session('already_response') }}",
+                showConfirmButton: false
+            });
+        });
+    </script>
+@endif
 
 
 

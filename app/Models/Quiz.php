@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Quiz extends Model
 {
+    use HasFactory ;
+
+
     protected $table = 'quizs';
     protected $fillable = ['question', 'reponse1', 'reponse2', 'reponse3', 'reponse4', 'correct_option'];
 

@@ -15,25 +15,46 @@ class BoutiqueController extends Controller
 
     public function boutique()
     {
-        return view('boutique');
+        $articles = Articles::all();
+        return view('boutique', compact('articles'));
     }
 
+    
     public function index()
     {
         $articles = Articles::all();
         return view('boutique', compact('articles'));
     }
 
+    public function createArticle(Request $request)
+    {
+        $article = Articles::create($request->all());
+        return response()->json($article, 201);
+    }
+
+    public function updateArticle(Request $request, $id)
+    {
+        $article = Articles::findOrFail($id);
+        $article->update($request->all());
+        return response()->json($article, 200);
+    }
+
+    public function deleteArticle($id)
+    {
+        $article = Articles::findOrFail($id);
+        $article->delete();
+        return response()->json(null, 200);
+    }
+
     public function acheter(Request $request, $id)
     {
         if (auth()->guest()) {
-            return redirect()->route('boutique')->with('login_error', 'Veuillez vous connecter pour continuer.');
+            return redirect()->route('login')->with('login_error', 'Veuillez vous connecter pour continuer.');
         }
 
         $article = Articles::findOrFail($id);
         $user = auth()->user();
 
-        // Vérifier si l'article est déjà dans le panier
         if ($user->panier()->where('articles.id', $article->id)->exists()) {
             return redirect()->route('boutique')->with('error', 'Vous possèdez deja cet article.');
         }
@@ -45,11 +66,9 @@ class BoutiqueController extends Controller
             $isFivePurchase = $panierCount == 4;
             $isTenPurchase = $panierCount == 9;
 
-            // Vérifiez si l'article a une note de 85 ou plus
             $isNote85 = $article->note >= 85;
             $isNote90 = $article->note >= 90;
 
-            // Compter le nombre d'articles avec une note de 85 ou plus dans le panier de l'utilisateur
             $countArticles85 = $user->panier()->where('note', '>=', 85)->count();
             $countArticles90 = $user->panier()->where('note', '>=', 90)->count();
 
@@ -74,13 +93,12 @@ class BoutiqueController extends Controller
                 $bonusMessages[] = "Bonus de 15 points pour un article noté 85 ou plus!";
             }
             if ($isNote90 && $countArticles90 == 0) {
-                $user->points += 30; // Bonus pour une note de 90 ou plus
+                $user->points += 30; // Bonus pour un article noté 90 ou plus
                 $bonusMessages[] = "Bonus de 30 points pour un article noté 90 ou plus!";
             }
 
             $user->save();
 
-            // Ajouter l'article au panier
             $user->panier()->attach($article->id, [
                 'quantite' => 1,
                 'valeur' => $article->prix_public
@@ -99,11 +117,11 @@ class BoutiqueController extends Controller
             }
         }
 
-        return redirect()->route('boutique')->with('error', 'Vous être trop pauvre ! Ouvrez un OF.');    }
+        return redirect()->route('boutique')->with('error', 'Vous être trop pauvre ! Ouvrez un OF.');
+    }
 
     public function showPaniers()
     {
-        // Charger les paniers avec les articles, en triant les articles par prix_public
         $paniers = Panier::with(['article' => function ($query) {
             $query->orderBy('prix_public', 'asc');
         }])->get();

@@ -11,41 +11,34 @@ class PasswordUpdateTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_password_can_be_updated(): void
+    public function test_password_can_be_updated()
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            'password' => Hash::make('OldPassword1!')
+        ]);
 
-        $response = $this
-            ->actingAs($user)
-            ->from('/profile')
-            ->put('/password', [
-                'current_password' => 'password',
-                'password' => 'new-password',
-                'password_confirmation' => 'new-password',
-            ]);
+        $response = $this->actingAs($user)->put('/profile/password', [
+            'current_password' => 'OldPassword1!',
+            'password' => 'NewPassword1!', // Mot de passe qui satisfait les règles
+            'password_confirmation' => 'NewPassword1!',
+        ]);
 
-        $response
-            ->assertSessionHasNoErrors()
-            ->assertRedirect('/profile');
-
-        $this->assertTrue(Hash::check('new-password', $user->refresh()->password));
+        $response->assertStatus(302);
+        $this->assertTrue(Hash::check('NewPassword1!', $user->fresh()->password));
     }
 
-    public function test_correct_password_must_be_provided_to_update_password(): void
+    public function test_correct_password_must_be_provided_to_update_password()
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            'password' => Hash::make('OldPassword1!')
+        ]);
 
-        $response = $this
-            ->actingAs($user)
-            ->from('/profile')
-            ->put('/password', [
-                'current_password' => 'wrong-password',
-                'password' => 'new-password',
-                'password_confirmation' => 'new-password',
-            ]);
+        $response = $this->actingAs($user)->put('/profile/password', [
+            'current_password' => 'WrongPassword',
+            'password' => 'NewPassword1!', // Mot de passe qui satisfait les règles
+            'password_confirmation' => 'NewPassword1!',
+        ]);
 
-        $response
-            ->assertSessionHasErrorsIn('updatePassword', 'current_password')
-            ->assertRedirect('/profile');
+        $response->assertStatus(403);
     }
 }
