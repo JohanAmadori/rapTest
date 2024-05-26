@@ -52,9 +52,9 @@ public function verifyAnswer(Request $request)
 
         $score = session('score', 0);
         if ($isCorrect) {
-            $score += 10;
+            $score += 2;
             session(['score' => $score]);
-            $user->increment('points', 10);
+            $user->increment('points', 2);
         }
 
         return response()->json(['correct' => $isCorrect, 'score' => $score]);
