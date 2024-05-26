@@ -47,8 +47,10 @@ public function verifyAnswer(Request $request)
             return response()->json(['error' => 'Utilisateur non connecté.']);
         }
 
+        // Vérifier si la réponse est correcte
         $isCorrect = $selectedAnswer == $question->reponse;
 
+        // Mettre à jour le score si la réponse est correcte
         $score = session('score', 0);
         if ($isCorrect) {
             $score += 10;
@@ -56,6 +58,7 @@ public function verifyAnswer(Request $request)
             $user->increment('points', 10);
         }
 
+        // Retourner la réponse JSON
         return response()->json(['correct' => $isCorrect, 'score' => $score]);
     }
 
