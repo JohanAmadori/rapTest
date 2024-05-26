@@ -47,10 +47,25 @@ public function verifyAnswer(Request $request)
             return response()->json(['error' => 'Utilisateur non connecté.']);
         }
 
+        // Vérifiez si l'utilisateur a déjà répondu à cette question
+        $exists = UserReponse::where('user_id', $user->id)
+            ->where('question_id', $questionId)
+            ->exists();
+
+        if ($exists) {
+            return redirect()->route('rappeur')->with('already_response','Vous avez deja repondu à cette question.');
+        }
+
+        // Enregistrer la réponse de l'utilisateur dans la table user_reponses
+        UserReponse::create([
+            'user_id' => $user->id,
+            'question_id' => $questionId,
+            'answer' => $selectedAnswer, // Enregistrer la réponse sélectionnée
+        ]);
+
         // Vérifier si la réponse est correcte
         $isCorrect = $selectedAnswer == $question->reponse;
 
-        // Mettre à jour le score si la réponse est correcte
         $score = session('score', 0);
         if ($isCorrect) {
             $score += 10;
@@ -58,7 +73,6 @@ public function verifyAnswer(Request $request)
             $user->increment('points', 10);
         }
 
-        // Retourner la réponse JSON
         return response()->json(['correct' => $isCorrect, 'score' => $score]);
     }
 
