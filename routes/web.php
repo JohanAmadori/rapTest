@@ -189,7 +189,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('/classement', [UserController::class, 'showClassement'])->name('classement.show');
+Route::post('/classement', [UserController::class, 'showClassement'])->name('classement.show');
 
 Route::post('/quiz/finish', [QuizController::class, 'finishQuiz'])->name('quiz.finish');
 
