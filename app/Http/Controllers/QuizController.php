@@ -57,6 +57,7 @@ public function verifyAnswer(Request $request)
             return response()->json(['error' => 'Utilisateur non connecté.']);
         }
 
+<<<<<<< HEAD
         // L'utilisateur a déjà répondu à cette question
         $exists = UserReponse::where('user_id', $user->id)
             ->where('question_id', $questionId)
@@ -73,6 +74,8 @@ public function verifyAnswer(Request $request)
             'answer' => $selectedAnswer, 
         ]);
 
+=======
+>>>>>>> 00d061b0e5739d8f4e9dd9665df67ba348163844
         // Vérifier si la réponse est correcte
         $isCorrect = $selectedAnswer == $question->reponse;
 
