@@ -98,9 +98,10 @@
 
 <!-- Remettre a 0 -->
 
-<div class="finir-container text-center mt-4">
-    <a href="{{ route('quiz.resetScore') }}" class="finir btn btn-primary">FINIR LE QUIZZ</a> 
-</div>
+<button id="submit-button" type="submit" {{ $answeredQuestionsCount < 5 ? 'disabled' : '' }}>Finir le quiz</button>
+        @if($answeredQuestionsCount < 5)
+            <p>Vous devez répondre à au moins 5 questions pour pouvoir soumettre le quiz.</p>
+        @endif
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

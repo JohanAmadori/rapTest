@@ -42,5 +42,22 @@ class UserController extends Controller
 
     }
 
-}
+
+        public function showClassement(Request $request)
+        {
+            $triépar = $request->get('triépar', 'name');
+            $ordre = $request->get('ordre', 'asc');
+    
+            $users = User::orderBy($triépar, $ordre)->get();
+    
+            return view('classement', compact('users', 'triépar', 'ordre'));
+        }
+    }
+    
+
+    
+
+    
+
+
 

@@ -24,10 +24,20 @@ class QuizController extends Controller
     $quizs = Quiz::whereNull('rappeur_id')->get(); 
     return view('quiz_general', compact('quizs'));
 }
+
+public function finishQuiz(Request $request)
+{
+    $questions = Quiz::with('options')->get();
+    $user = auth()->user();
+    $answeredQuestionsCount = UserReponse::where('user_id', $user->id)->count();
+    
+    return view('rappeur', compact('questions', 'answeredQuestionsCount'));
+}
    
 
 public function verifyAnswer(Request $request)
     {
+       
 
         if (auth()->guest()) {
             return redirect()->route('rappeur')->with('login_error', 'Veuillez vous connecter pour continuer.');
@@ -47,25 +57,26 @@ public function verifyAnswer(Request $request)
             return response()->json(['error' => 'Utilisateur non connecté.']);
         }
 
-        // Vérifiez si l'utilisateur a déjà répondu à cette question
+        // L'utilisateur a déjà répondu à cette question
         $exists = UserReponse::where('user_id', $user->id)
             ->where('question_id', $questionId)
             ->exists();
 
         if ($exists) {
-            return redirect()->route('rappeur')->with('already_response','Vous avez deja repondu à cette question.');
+            return redirect()->route('rappeur');
         }
 
-        // Enregistrer la réponse de l'utilisateur dans la table user_reponses
+        // Enregistrer la réponse dans user_reponses
         UserReponse::create([
             'user_id' => $user->id,
             'question_id' => $questionId,
-            'answer' => $selectedAnswer, // Enregistrer la réponse sélectionnée
+            'answer' => $selectedAnswer, 
         ]);
 
         // Vérifier si la réponse est correcte
         $isCorrect = $selectedAnswer == $question->reponse;
 
+        // Mettre à jour le score si la réponse est correcte
         $score = session('score', 0);
         if ($isCorrect) {
             $score += 10;
@@ -73,6 +84,7 @@ public function verifyAnswer(Request $request)
             $user->increment('points', 10);
         }
 
+        // Retourner la réponse JSON
         return response()->json(['correct' => $isCorrect, 'score' => $score]);
     }
 
@@ -99,6 +111,11 @@ public function showLeaderboard()
     return view('leaderboard', compact('users'));
 }
 
+
+public function QuizFinish()
+{
+
+}
 
 
 public function getQuestionsByDifficulty(Request $request)
