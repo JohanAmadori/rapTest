@@ -18,21 +18,9 @@
 <table>
     <thead>
         <tr>
-            <th class="triépar {{ $triépar == 'name' ? $ordre : '' }}" data-column="name">
-                <a href="{{ route('classement.show', ['triépar' => 'name', 'ordre' => $ordre === 'asc' ? 'desc' : 'asc']) }}">
-                    Name
-                </a>
-            </th>
-            <th class="triépar {{ $triépar == 'valeur_collection' ? $ordre : '' }}" data-column="valeur_collection">
-                <a href="{{ route('classement.show', ['triépar' => 'valeur_collection', 'ordre' => $ordre === 'asc' ? 'desc' : 'asc']) }}">
-                    Valeur Collection
-                </a>
-            </th>
-            <th class="triépar {{ $triépar == 'points' ? $ordre : '' }}" data-column="points">
-                <a href="{{ route('classement.show', ['triépar' => 'points', 'ordre' => $ordre === 'asc' ? 'desc' : 'asc']) }}">
-                    Points
-                </a>
-            </th>
+            <th>Nom</th>
+            <th>Valeur Collection</th>
+            <th>Points</th>
         </tr>
     </thead>
     <tbody>
