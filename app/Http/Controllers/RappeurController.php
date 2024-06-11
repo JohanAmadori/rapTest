@@ -15,6 +15,8 @@ class RappeurController extends Controller
         ]);
     }
 
+    
+
     public function afficherPage($id)
     {
         $rappeur = Rappeur::findOrFail($id);

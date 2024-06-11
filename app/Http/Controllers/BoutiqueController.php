@@ -49,7 +49,7 @@ class BoutiqueController extends Controller
     public function acheter(Request $request, $id)
     {
         if (auth()->guest()) {
-            return redirect()->route('login')->with('login_error', 'Veuillez vous connecter pour continuer.');
+            return redirect()->route('boutique')->with('login_error', 'Veuillez vous connecter pour continuer.');
         }
 
         $article = Articles::findOrFail($id);

@@ -5,11 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-
+use Cjmellor\Rating\Concerns\CanBeRated;
 
 class Rappeur extends Model
 {
     use HasFactory;
+    use CanBeRated;
+
+    public function ratings()
+    {
+        return $this->morphMany(Rating::class, 'rateable');
+    }
 
     public function quizs(): HasMany
     {

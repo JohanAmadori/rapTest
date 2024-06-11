@@ -97,6 +97,41 @@
 
 
 <!-- Remettre a 0 -->
+<form action="{{ route('quiz.resetScore') }}" method="GET">
+        @csrf
+        <button type="submit" class="finir btn btn-primary">Finir le quizz</button>
+</form>
+
+<br></br>
+
+
+<div class="rappeur-biographie" data-rappeur-id="{{ $rappeur->id }}">
+            <h2>Qui est {{ $rappeur->nom }} ?</h2>
+            <p>{{ $rappeur->biographie }}</p>
+        </div>
+
+        <style>
+        .rappeur-biographie {
+            background-size: cover;
+            background-color: white;
+            padding: 20px;
+            margin: 10px;
+            border: 2px solid #8b4513; /* Dark brown border */
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            color: #333; /* Dark text color */
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        h2 {
+            text-align: center;
+            color: #8b0000; /* Dark red color for the heading */
+        }
+    </style>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -168,19 +203,6 @@ document.addEventListener('DOMContentLoaded', function() {
     <br></br>
 
        
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    fetch('/path/to/get/score') 
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('score').textContent = data.score;
-        })
-        .catch(error => console.error('Erreur lors de la récupération du score:', error));
-});
-
-</script>
-
 
 <script>
 
@@ -266,6 +288,88 @@ window.onbeforeunload = function() {
     </script>
 @endif
 
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        .rating {
+            font-size: 2rem;
+            color: gold;
+            cursor: pointer;
+        }
+    </style>
+
+    
+
+
+    <div class="rating" id="rating">
+            <span class="fa fa-star" data-value="1"></span>
+            <span class="fa fa-star" data-value="2"></span>
+            <span class="fa fa-star" data-value="3"></span>
+            <span class="fa fa-star" data-value="4"></span>
+            <span class="fa fa-star" data-value="5"></span>
+        </div>
+    </div>
+    
+    <script>
+        $(document).ready(function() {
+            $('#rating .fa').click(function() {
+                var star = $(this);
+                var rating = star.data('value');
+                var rapperId = '{{ $rappeur->id }}'; // Assurez-vous que cette variable est définie et accessible
+                var allStars = $('#rating .fa');
+
+                // Désactiver toutes les étoiles et les griser
+                allStars.prop('disabled', true).addClass('grise');
+
+                $.ajax({
+                    url: '{{ route("rate-rapper") }}',
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        rapper_id: rapperId,
+                        rating: rating
+                    },
+                    success: function(response) {
+                        if (response.error) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Erreur',
+                                text: response.error,
+                                footer: '<a href="{{ route("login") }}" class="swal2-confirm swal2-styled" style="display: inline-block;">Se connecter</a>',
+                                showConfirmButton: false
+                            });
+                            allStars.prop('disabled', false).removeClass('grise'); // Réactiver les étoiles si erreur
+                        } else {
+                            allStars.prop('disabled', false).removeClass('grise');
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Merci',
+                                text: 'Votre note a été enregistrée avec succès.',
+                                showConfirmButton: true
+                            });
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        if (xhr.status === 403) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Erreur',
+                                text: 'Vous devez être connecté pour noter.',
+                                footer: '<a href="{{ route("login") }}" class="swal2-confirm swal2-styled" style="display: inline-block;">Se connecter</a>',
+                                showConfirmButton: false
+                            });
+                            allStars.prop('disabled', false).removeClass('grise'); // Réactiver les étoiles si erreur
+                        } else {
+                            console.error('Erreur lors de la soumission de la note');
+                            allStars.prop('disabled', false).removeClass('grise'); // Réactiver les étoiles si erreur
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 
 
 @include('footer')

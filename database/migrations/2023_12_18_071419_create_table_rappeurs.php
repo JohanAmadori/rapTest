@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('lien')->nullable(true);
             $table->string('musique')->nullable(true);
             $table->string('background')->nullable(true);
+            
+            $table->text('biographie')->nullable(true);
 
             $table->string('spotify')->nullable(true);
             $table->string('insta')->nullable(true);

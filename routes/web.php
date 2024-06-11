@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\PasswordController;
 
+use App\Models\Rappeur;
 
 
 
@@ -26,12 +27,9 @@ use App\Http\Controllers\ReponseController;
 
 use App\Http\Controllers\TopController;
 
+use App\Http\Controllers\RatingController;
 
-use App\Models\Rappeur;
-use App\Http\Controllers\Front\{
-    PostController as FrontPostController,
-    CommentController as FrontCommentController
-};
+
 
 
 /*
@@ -62,6 +60,14 @@ Route::get('/cartes',[BoutiqueController::class,'cartes']);
 
 Route::get('/quiz_general',[QuizController::class,'quiz_general']);
 
+Route::get('/quiz', [QuizController::class, 'index'])->name('quiz.index');
+
+
+
+Route::post('/quiz/questions', [QuizController::class, 'getQuestionsByDifficulty'])->name('quiz.getQuestionsByDifficulty');
+
+
+
 
 Route::post('/boutique/acheter/{id}', [BoutiqueController::class, 'acheter'])->name('boutique.acheter');
 
@@ -75,15 +81,10 @@ Route::get('/cartes', [CartController::class, 'showCart'])->name('cartes');
 Route::post('/quiz/enregistrerReponse', [QuizController::class, 'enregistrerReponse'])->name('quiz.enregistrerReponse');
 
 
-Route::get('/quiz/questions', 'QuizController@getQuestionsByDifficulty')->name('quiz.getQuestionsByDifficulty');
 
+Route::post('/rappeur/rate-rapper', [RatingController::class, 'rate'])->name('rate-rapper');
 
-
-
-
-
-
-
+Route::get('/rappeur', [RappeurController::class, 'index'])->name('rappeurs');
 
 
 
@@ -189,8 +190,5 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::post('/classement', [UserController::class, 'showClassement'])->name('classement.show');
-
-Route::post('/quiz/finish', [QuizController::class, 'finishQuiz'])->name('quiz.finish');
 
 require __DIR__.'/auth.php';

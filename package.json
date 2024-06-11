@@ -3,8 +3,9 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
+        "build": "node --max-old-space-size=4096 node_modules/.bin/vite build",
         "watch": "vite watch"
+        
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",

@@ -79,9 +79,9 @@ public function verifyAnswer(Request $request)
         // Mettre à jour le score si la réponse est correcte
         $score = session('score', 0);
         if ($isCorrect) {
-            $score += 10;
+            $score += 2;
             session(['score' => $score]);
-            $user->increment('points', 10);
+            $user->increment('points', 2);
         }
 
         // Retourner la réponse JSON
@@ -120,13 +120,13 @@ public function QuizFinish()
 
 public function getQuestionsByDifficulty(Request $request)
 {
-    $difficulty = $request->input('difficulty'); // Récupérer la difficulté depuis la requête
-    $questions = Quiz::where('difficulte', $difficulty)->get(); // Filtrer les questions par difficulté
+    $difficulty = $request->input('difficulty');
 
-    // Retourner la vue avec les questions
-    return view('quiz.questions', compact('questions'))->render();
+    // Fetch questions based on difficulty
+    $questions = Quiz::where('difficulty', $difficulty)->get();
+
+    return response()->json(['questions' => $questions]);
 }
-
 
 
 

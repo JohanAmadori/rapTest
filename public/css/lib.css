@@ -266,9 +266,7 @@
   background-color: red; /* Change la couleur en rouge pour la mauvaise réponse */
 }
 
-.finir{
-    font-size: 25px;
-}
+
 
 .incorrect-answer {
   background-color: red;
@@ -291,6 +289,9 @@ button.grise {
   border-color: white;
 }
 
+.finir{
+  font-size: 25px;
+}
 
 
 
