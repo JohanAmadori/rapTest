@@ -69,6 +69,10 @@
 
 
 
+
+
+
+
 <script>
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -128,7 +132,7 @@
         }
         h2 {
             text-align: center;
-            color: #8b0000; /* Dark red color for the heading */
+            color: #8b0000;
         }
     </style>
 
@@ -317,7 +321,16 @@ window.onbeforeunload = function() {
             $('#rating .fa').click(function() {
                 var star = $(this);
                 var rating = star.data('value');
-                var rapperId = '{{ $rappeur->id }}'; // Assurez-vous que cette variable est définie et accessible
+                var rapperId = '{{ $rappeur->id ?? null }}'; // Assurez-vous que cette variable est définie et accessible
+                if (!rapperId) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erreur',
+                        text: 'Identifiant du rappeur non trouvé.',
+                        showConfirmButton: true
+                    });
+                    return;
+                }
                 var allStars = $('#rating .fa');
 
                 // Désactiver toutes les étoiles et les griser
@@ -342,35 +355,23 @@ window.onbeforeunload = function() {
                             });
                             allStars.prop('disabled', false).removeClass('grise'); // Réactiver les étoiles si erreur
                         } else {
-                            allStars.prop('disabled', false).removeClass('grise');
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Merci',
-                                text: 'Votre note a été enregistrée avec succès.',
+                                text: response.message,
                                 showConfirmButton: true
                             });
+                            allStars.prop('disabled', false).removeClass('grise'); // Réactiver les étoiles après succès
                         }
                     },
                     error: function(xhr, status, error) {
-                        if (xhr.status === 403) {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Erreur',
-                                text: 'Vous devez être connecté pour noter.',
-                                footer: '<a href="{{ route("login") }}" class="swal2-confirm swal2-styled" style="display: inline-block;">Se connecter</a>',
-                                showConfirmButton: false
-                            });
-                            allStars.prop('disabled', false).removeClass('grise'); // Réactiver les étoiles si erreur
-                        } else {
-                            console.error('Erreur lors de la soumission de la note');
-                            allStars.prop('disabled', false).removeClass('grise'); // Réactiver les étoiles si erreur
-                        }
+                        console.error('Erreur lors de la soumission de la note');
+                        allStars.prop('disabled', false).removeClass('grise'); // Réactiver les étoiles en cas d'erreur
                     }
                 });
             });
         });
     </script>
-
 
 @include('footer')
 

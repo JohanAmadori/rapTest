@@ -86,6 +86,23 @@ public function verifyAnswer(Request $request)
 
         // Retourner la réponse JSON
         return response()->json(['correct' => $isCorrect, 'score' => $score]);
+
+                // L'utilisateur a déjà répondu à cette question
+                $exists = UserReponse::where('user_id', $user->id)
+                ->where('question_id', $questionId)
+                ->exists();
+    
+            if ($exists) {
+                return redirect()->route('rappeur');
+            }
+    
+            // Enregistrer la réponse dans user_reponses
+            UserReponse::create([
+                'user_id' => $user->id,
+                'question_id' => $questionId,
+                'answer' => $selectedAnswer, 
+            ]);
+    
     }
 
     public function checkAnswer(Request $request)
@@ -112,21 +129,16 @@ public function showLeaderboard()
 }
 
 
-public function QuizFinish()
-{
-
-}
-
-
 public function getQuestionsByDifficulty(Request $request)
 {
     $difficulty = $request->input('difficulty');
 
     // Fetch questions based on difficulty
-    $questions = Quiz::where('difficulty', $difficulty)->get();
+    $questions = Quiz::where('difficulte', $difficulty)->get();
 
-    return response()->json(['questions' => $questions]);
+    return view('partials.questions', compact('questions'))->render();
 }
+
 
 
 
