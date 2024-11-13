@@ -101,7 +101,7 @@ class BoutiqueController extends Controller
 
             $user->panier()->attach($article->id, [
                 'quantite' => 1,
-                'valeur' => $article->prix_public
+                'valeur' => $article->prix_public                
             ]);
 
             $successMessage = "Vous avez ajouté une carte à votre collection!";
@@ -114,10 +114,11 @@ class BoutiqueController extends Controller
                 return redirect()->route('cartes')->with('success_with_bonus', $successMessage);
             } else {
                 return redirect()->route('cartes')->with('success_no_bonus', $successMessage);
-            }
+            }           
         }
 
         return redirect()->route('boutique')->with('error', 'Vous être trop pauvre ! Ouvrez un OF.');
+        return redirect()->route('cartes')->with('success_with_bonus', $successMessage);
     }
 
     public function showPaniers()

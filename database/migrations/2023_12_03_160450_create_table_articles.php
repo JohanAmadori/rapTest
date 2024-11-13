@@ -23,9 +23,7 @@ return new class extends Migration
             $table->index('nom');
             $table->index('note');
             $table->index('prix_public');
-            $table->index('img');
-
-            
+            $table->index('img');           
             
 
         });

@@ -15,5 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call([ArticleSeeder::class]);
         $this->call([RappeursSeeder::class]);
         $this->call([QuizsSeeder::class]);
+        $this->call([ArticleSeeder::class]);
+        $this->call([PacksTableSeeder::class]);
     }
 }

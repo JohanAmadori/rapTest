@@ -25,6 +25,14 @@ class Articles extends Model
                     ->withPivot('quantite')
                     ->withTimestamps();
     }
+
+    public function packs()
+    {
+        return $this->belongsToMany(Pack::class, 'pack_item', 'article_id', 'pack_id')
+                    ->withPivot('probability')
+                    ->withTimestamps();
+    }
+
     
 }
 

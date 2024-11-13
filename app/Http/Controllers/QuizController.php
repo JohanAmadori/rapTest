@@ -15,9 +15,16 @@ use Illuminate\Database\QueryException;
 class QuizController extends Controller
 {
     public function showQuiz($quizId)
-    {                
-        $user = auth()->user();        
-    }  
+    {
+        $user = auth()->user();
+        $quiz = Quiz::with('options')->find($quizId);
+    
+        // Récupère les réponses de l'utilisateur pour ce quiz depuis la session
+        $reponses = session('reponses', []);
+    
+        return view('quiz.show', compact('quiz', 'reponses'));
+    }
+    
 
     public function quiz_general()
 {
@@ -36,8 +43,7 @@ public function finishQuiz(Request $request)
    
 
 public function verifyAnswer(Request $request)
-    {
-        
+    {       
 
         if (auth()->guest()) {
             return redirect()->route('rappeur')->with('login_error', 'Veuillez vous connecter pour continuer.');

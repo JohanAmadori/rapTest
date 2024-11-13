@@ -29,6 +29,9 @@ use App\Http\Controllers\TopController;
 
 use App\Http\Controllers\RatingController;
 
+use App\Http\Controllers\PackController;
+
+
 
 
 
@@ -148,6 +151,18 @@ Route::get('/leaderboard', [QuizController::class, 'showLeaderboard'])->name('le
 
 
 
+Route::post('/packs/{id}/open', [PackController::class, 'openPack'])->name('packs.open')->middleware('auth');;
+
+Route::get('/packs', [PackController::class, 'index'])->name('packs.index');
+
+
+Route::post('/vendre-carte/{id}', [CartController::class, 'vendreCarte'])->name('vendre-carte');
+
+
+
+
+
+
 
 
 
@@ -180,7 +195,6 @@ Route::post('/boutique', function () {
 
 
 
-
 Route::get('/rappeur/{id}', [RappeurController::class, 'index']);
 
 Route::middleware('auth')->group(function () {
@@ -188,6 +202,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+
 
 
 

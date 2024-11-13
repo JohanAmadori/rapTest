@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Articles;
 use App\Models\Panier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -44,6 +45,30 @@ class CartController extends Controller
             return redirect('login');  
         }
     }
+
+    public function vendreCarte($id)
+    {
+        $user = Auth::user();
+        $panier = Panier::where('id', $id)->where('user_id', $user->id)->first();
+
+        if (!$panier) {
+            return redirect()->route('cartes')->with('error', 'Carte non trouvée ou vous n\'êtes pas autorisé à la vendre.');
+        }
+
+        // Ajouter le prix de la carte aux points de l'utilisateur
+        $article = $panier->article;
+        $user->points += $article->prix_public;
+
+        // Sauvegarder les modifications de l'utilisateur et supprimer l'entrée du panier
+        $user->save();
+        $panier->delete();
+
+                // Message de succès avec le montant de la vente
+                $successMessage = "Carte vendue avec succès pour {$article->prix_public} crédits ! Vos points ont été mis à jour.";
+        
+                return redirect()->route('cartes')->with('success', $successMessage);
+    }
+
     
 
 

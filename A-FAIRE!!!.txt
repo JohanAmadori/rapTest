@@ -1,0 +1,19 @@
+A FAIRE:
+
+- Réafficher les bonus d'achats en boutique sur page cartes
+- Modifier cet achievements pour que le bonus ai lieu qu'une seule fois
+- Quiz des 8 rappeurs : les résultats des questions sont save et restent affichés
+meme apres actualisation et deconnexion(BDD)
+- 
+
+ACHIVEMENTS A RAJOUTER :
+
+consulter insta footer : +5pts
+ecouter un son : +1pt (8pts max)
+telecharger carte : +1pt (8pts max)
+
+finir les quizs des 8 rappeurs : +8pts
+
+premier pack ouvert: +5pts
+
+  

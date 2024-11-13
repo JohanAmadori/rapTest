@@ -1,8 +1,8 @@
 <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
-    <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
+        <div class="flex justify-between h-16 items-center"> <!-- Assurez-vous que tous les éléments enfants partagent ces classes -->
+            <div class="flex items-center space-x-8"> <!-- Flex container pour maintenir l'alignement des items -->
+
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('accueil') }}">
@@ -21,9 +21,21 @@
 
                     <x-slot name="content">
 
-                    <x-nav-link :href="route('boutique')" :active="request()->routeIs('boutique')">
-                        {{ __('Boutique') }}
-                    </x-nav-link>
+                    <!-- Dropdown Menu for Boutique -->
+                    <div @mouseover="open = true" @mouseleave="open = false" class="relative">
+                        <x-nav-link :href="route('boutique')" :active="request()->routeIs('boutique')">
+                            {{ __('Boutique') }}
+                        </x-nav-link>
+
+                        <!-- Dropdown Menu -->
+                        <div x-show="open" x-transition class="absolute z-50 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5">
+                            <div class="py-1">
+                                <a href="{{ route('packs.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900">
+                                    {{ __('Ouvrir des packs') }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
                     
                     <x-nav-link :href="route('cartes')">

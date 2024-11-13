@@ -17,7 +17,11 @@
     <div class="cards-container">
         @foreach($sortedPaniers as $panier)
             <div class="card">
-                <img src="{{ asset($panier->article->img) }}" height="311px" width="228px">
+                <img src="{{ asset($panier->article->img) }}" height="311px" width="228px" alt="{{ $panier->article->nom }}">
+                <form action="{{ route('vendre-carte', $panier->id) }}" method="POST" >
+                    @csrf
+                    <button type="submit" class="btn btn-danger">Vendre</button>
+                </form>
             </div>
         @endforeach
     </div>
@@ -27,37 +31,33 @@
     <p>Vous ne possédez aucune carte.</p>
 @endif
 
-@if (session('success_with_bonus'))
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            Swal.fire({
-                icon: 'success',
-                title: 'Achievement débloqué !',
-                html: `{!! session('success_with_bonus') !!}`,
-                showConfirmButton: false,
-                timer: 6000
-            });
-        });
-    </script>
-@endif
-
-@if (session('success_no_bonus'))
+@if (session('success'))
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             Swal.fire({
                 icon: 'success',
                 title: 'Succès',
-                text: "{{ session('success_no_bonus') }}",
-                showConfirmButton: false,
-                timer: 4000
+                text: "{{ session('success') }}",
+                showConfirmButton: true
             });
         });
     </script>
 @endif
 
-
+@if (session('error'))
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'error',
+                title: 'Erreur',
+                text: "{{ session('error') }}",
+                showConfirmButton: true
+            });
+        });
+    </script>
+@endif
 
 </body>
 </html>
